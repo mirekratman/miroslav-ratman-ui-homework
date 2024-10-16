@@ -50,6 +50,11 @@ Below you can find the main technology which will be used to complete the task:
 FTI: Please take on mind, that the time include context-switches.
 I still need to count that current project takes priority over this task and other additional activities related to current work.
 
+## Documentation - around 1 hour
+
+- documentation
+- git setup
+
 ## Initial phase - around 8 hours
 
 - repository structure
@@ -94,4 +99,16 @@ I still need to count that current project takes priority over this task and oth
 
 - everything needed to properly finish task
 
-Estimated time: 29-35 hours
+Estimated time: 30-36 hours
+
+# Installation
+
+TBD
+
+# Environments
+
+TBD
+
+# Suggestion
+
+TBD
