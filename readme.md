@@ -16,6 +16,7 @@ The DOC file with the task can be found [here](docs/ENGG-Frontend Homework.pdf).
 - When it comes to "Upon completion, push your code to the provided repository for review." should I use approach I mentioned in my email.
   I would like to push changes to repository step-by-step as things will be completed.
 - there is an issue in a task description: The task contain wording "components" "public components". There is no components available in API endpoints. I see some links reffering to APPs/Apps details endpoints. Please clarify the task and provide a proper description.
+- Please set "main" branch as default.
 
 ## Suggestions
 
