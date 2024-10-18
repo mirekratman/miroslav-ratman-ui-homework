@@ -56,7 +56,7 @@ I still need to count that current project takes priority over this task and oth
 - documentation
 - git setup
 
-## Initial phase - around 8 hours
+## Initial phase - around 8 hours - (4,5 hour spent)
 
 - repository structure
 - framework setup
