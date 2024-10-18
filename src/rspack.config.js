@@ -1,5 +1,6 @@
 const rspack = require("@rspack/core");
-const packageJson = require("./package.json");
+// TODO - remove in final production version. Replace with alternative option, like github SHA or build number
+const packageJson = require("./package.json"); // Its for testing purposes only
 
 module.exports = {
   entry: {
