@@ -1,8 +1,6 @@
 .DEFAULT_GOAL := dev
 
 VERCEL_TOKEN := $(shell cat .vercel-token)
-GIT_SHA := $(shell git rev-parse HEAD | cut -c 1-8)
-
 
 dev:
 	(cd src && yarn install --frozen-lockfile)
@@ -19,3 +17,7 @@ fix:
 
 test:
 	(cd src && yarn test)
+
+deploy:
+	(cd src && yarn build)
+	(cd src && vercel --token $(VERCEL_TOKEN) --prod)
