@@ -1,7 +1,8 @@
 # dependencies
 
 # testing
-coverage
+tests/cypress/video
+tests/cypress/screenshots
 
 # production
 node_modules
