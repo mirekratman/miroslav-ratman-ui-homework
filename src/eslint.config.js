@@ -21,7 +21,7 @@
 
       // React specific rules
       "react/prop-types": "off",
-      "react/react-in-jsx-scope": "off", // For Next.js or React 17+ projects
+      "react/react-in-jsx-scope": "off", // For React 17+ projects
 
       // TypeScript specific rules
       "@typescript-eslint/no-unused-vars": "warn",
