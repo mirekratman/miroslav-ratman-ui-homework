@@ -20,4 +20,4 @@ test:
 
 deploy:
 	(cd src && yarn build)
-	(cd src && vercel --token $(VERCEL_TOKEN) --prod)
+	(vercel --token $(VERCEL_TOKEN) --prod)

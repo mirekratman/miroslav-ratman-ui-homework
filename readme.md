@@ -106,9 +106,30 @@ Estimated time: 30-36 hours
 
 TBD
 
-# Environments
+# Deployment
 
-TBD
+Deployment process is done in two different ways: a dev version and STAGE version.
+In this particular example staging version could be considered as PROD.
+In case of a real app we can setup different environments thats will pass on necessary criteria,
+like for example automated tests passing, etc.
+
+# Environments - In progress
+
+## Dev
+
+The dev environment is released from localhost and will be stored under every person personal/company account.
+We can eoptimise this by setting extra rules that will deploy dev based on some extra criteria like commit SHA, etc.
+This will give flexibility to release multiple environments for testing purposes.
+
+For this task purpose I use DEV env located here: https://keboola-task-dev-mr.vercel.app/
+
+## Staging
+
+As we said we will use STAGE as PROD for this task purpose, the STAGE can be found here:
+https://keboola-task-stage-mr.vercel.app/
+Its deployed by github actions and uses predefined actions secrets.
+As I do not have full access to shared repo, I created a one-to-one copy on my github account and used it
+to setup and verify CI/CD.
 
 # Suggestion
 
