@@ -16,6 +16,7 @@ The DOC file with the task can be found [here](docs/ENGG-Frontend Homework.pdf).
 - When it comes to "Upon completion, push your code to the provided repository for review." should I use approach I mentioned in my email.
   I would like to push changes to repository step-by-step as things will be completed.
 - there is an issue in a task description: The task contain wording "components" "public components". There is no components available in API endpoints. I see some links reffering to APPs/Apps details endpoints. Please clarify the task and provide a proper description.
+- Please set "main" branch as default.
 
 ## Suggestions
 
@@ -50,7 +51,12 @@ Below you can find the main technology which will be used to complete the task:
 FTI: Please take on mind, that the time include context-switches.
 I still need to count that current project takes priority over this task and other additional activities related to current work.
 
-## Initial phase - around 8 hours
+## Documentation - around 1 hour
+
+- documentation
+- git setup
+
+## Initial phase - around 8 hours - (4,5 hour spent)
 
 - repository structure
 - framework setup
@@ -94,4 +100,37 @@ I still need to count that current project takes priority over this task and oth
 
 - everything needed to properly finish task
 
-Estimated time: 29-35 hours
+Estimated time: 30-36 hours
+
+# Installation
+
+TBD
+
+# Deployment
+
+Deployment process is done in two different ways: a dev version and STAGE version.
+In this particular example staging version could be considered as PROD.
+In case of a real app we can setup different environments thats will pass on necessary criteria,
+like for example automated tests passing, etc.
+
+# Environments - In progress
+
+## Dev
+
+The dev environment is released from localhost and will be stored under every person personal/company account.
+We can eoptimise this by setting extra rules that will deploy dev based on some extra criteria like commit SHA, etc.
+This will give flexibility to release multiple environments for testing purposes.
+
+For this task purpose I use DEV env located here: https://keboola-task-dev-mr.vercel.app/
+
+## Staging
+
+As we said we will use STAGE as PROD for this task purpose, the STAGE can be found here:
+https://keboola-task-stage-mr.vercel.app/
+Its deployed by github actions and uses predefined actions secrets.
+As I do not have full access to shared repo, I created a one-to-one copy on my github account and used it
+to setup and verify CI/CD.
+
+# Suggestion
+
+TBD

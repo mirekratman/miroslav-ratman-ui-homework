@@ -1,0 +1,7 @@
+{
+  "name": "@keboola/shared",
+  "version": "1.0.0",
+  "description": "Combination of providers and shared types as also other necessary app libraries",
+  "main": "index.tsx",
+  "module": "index.tsx"
+}

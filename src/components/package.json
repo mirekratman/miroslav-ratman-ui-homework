@@ -1,0 +1,7 @@
+{
+  "name": "@keboola/components",
+  "version": "1.0.0",
+  "description": "Combination of basic and extended components for UI",
+  "main": "index.tsx",
+  "module": "index.tsx"
+}
