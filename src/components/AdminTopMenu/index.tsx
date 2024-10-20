@@ -1,6 +1,6 @@
 import React from "react";
 
-const AdminBottomMenu = () => {
+const AdminTopMenu = () => {
   return (
     <>
       <nav className="bg-white border-gray-200 border-b	border-b-slate-200">
@@ -150,4 +150,4 @@ const AdminBottomMenu = () => {
   );
 };
 
-export default AdminBottomMenu;
+export default AdminTopMenu;
