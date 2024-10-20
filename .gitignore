@@ -1,8 +1,8 @@
 # dependencies
 
 # testing
-tests/cypress/video
-tests/cypress/screenshots
+/tests/cypress/video
+/tests/cypress/screenshots
 
 # production
 node_modules
