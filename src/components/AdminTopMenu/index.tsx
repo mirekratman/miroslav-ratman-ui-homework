@@ -71,7 +71,7 @@ const AdminTopMenu = () => {
           </div>
         </div>
       </nav>
-      <nav className="bg-white border-gray-200">
+      <nav className="bg-white border-b border-b-slate-300">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
           <div
             id="mega-menu-full"
