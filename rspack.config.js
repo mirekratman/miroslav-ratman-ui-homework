@@ -38,6 +38,9 @@ module.exports = {
       },
     ],
   },
+  devServer: {
+    static: [path.resolve(__dirname, "./src/admin/public/assets/")],
+  },
   resolve: {
     alias: {
       "@keboola/shared": path.resolve(__dirname, "./src/shared/"),
