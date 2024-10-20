@@ -52,5 +52,13 @@ module.exports = {
         version: packageJson.version,
       },
     }),
+    new rspack.CopyRspackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "./src/admin/public/assets"),
+          to: path.resolve(__dirname, "./dist/assets"),
+        },
+      ],
+    }),
   ],
 };
