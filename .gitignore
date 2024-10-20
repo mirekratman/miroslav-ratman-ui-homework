@@ -1,7 +1,7 @@
 # dependencies
 
 # testing
-/tests/cypress/video
+/tests/cypress/videos
 /tests/cypress/screenshots
 
 # production
