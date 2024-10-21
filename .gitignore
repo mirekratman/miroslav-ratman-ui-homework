@@ -16,3 +16,6 @@ node_modules
 /dist
 .vercel-token
 .vercel
+
+# env
+.env

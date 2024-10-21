@@ -2,9 +2,9 @@ import "./index.scss";
 
 import React from "react";
 
-const AdminBottomMenu = () => {
+const MenuAdminBottom = () => {
   return (
-    <div className="AdminBottomMenu fixed bottom-0 inset-x-0 bg-black p-6 border-t border-gray-300 shadow-lg">
+    <div className="MenuAdminBottom bottom-0 inset-x-0 bg-black p-6 border-t border-gray-300 shadow-lg">
       <div className="flex flex-wrap justify-between items-top mx-auto max-w-screen-xl p-4">
         <ul className="space-y-2">
           <li>
@@ -77,10 +77,13 @@ const AdminBottomMenu = () => {
               Support
             </a>
           </li>
+          <li>
+            <h5>Hello, React with Rspack!</h5>
+          </li>
         </ul>
       </div>
     </div>
   );
 };
 
-export default AdminBottomMenu;
+export default MenuAdminBottom;

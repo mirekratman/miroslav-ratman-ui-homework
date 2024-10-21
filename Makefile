@@ -18,6 +18,9 @@ fix:
 test:
 	(cd src && yarn test)
 
+mockapi:
+	(cd mock && npm install && npm run start)
+
 deploy:
 	(cd src && yarn build)
 	(vercel --token $(VERCEL_TOKEN) --prod)

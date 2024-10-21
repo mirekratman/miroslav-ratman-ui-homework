@@ -2,9 +2,10 @@
 // INFO - In case it wil be needed to separate this folder into a separate package, it will be easier to do so
 
 // Providers
-export * from "./Providers/Providers";
+export * from "./Providers/BaseProviders";
 export * from "./Providers/ErrorProvider";
 export * from "./Providers/LoadingProvider";
+export * from "./Providers/AppsStorageProvider";
 
 // Types
 export * from "./Types/JsonProps";

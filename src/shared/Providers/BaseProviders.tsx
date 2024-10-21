@@ -3,7 +3,7 @@ import { ProviderProps } from "@keboola/shared/Types/ProviderProps";
 import { ErrorProvider } from "@keboola/shared/Providers/ErrorProvider";
 import { LoadingProvider } from "@keboola/shared/Providers/LoadingProvider";
 
-const Providers = (props: ProviderProps) => {
+const BaseProviders = ({ children }: ProviderProps) => {
   return (
     <ErrorProvider
       errorContent={
@@ -13,17 +13,9 @@ const Providers = (props: ProviderProps) => {
         </div>
       }
     >
-      <LoadingProvider
-        loadingContent={
-          <div className="fixed inset-0 bg-gray-800 bg-opacity-75 text-white flex items-center justify-center">
-            Loading page...
-          </div>
-        }
-      >
-        {props?.children}
-      </LoadingProvider>
+      <LoadingProvider>{children}</LoadingProvider>
     </ErrorProvider>
   );
 };
 
-export default Providers;
+export default BaseProviders;

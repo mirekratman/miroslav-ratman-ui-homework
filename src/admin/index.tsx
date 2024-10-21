@@ -3,8 +3,8 @@ import "./index.scss";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import Admin from "./app/App";
-import Providers from "@keboola/shared/Providers/Providers";
+import Admin from "./Admin";
+import BaseProviders from "@keboola/shared/Providers/BaseProviders";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -12,8 +12,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <Providers>
+    <BaseProviders>
       <Admin />
-    </Providers>
+    </BaseProviders>
   </React.StrictMode>
 );

@@ -1,0 +1,47 @@
+/* INFO - This file is used to write extra styles for the App component. */
+/* INFO - This file is For examplepurposes only. */
+
+body {
+  @apply bg-gray-50 font-sans text-gray-800;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold text-gray-900;
+}
+
+h1 {
+  @apply text-3xl border-b-2 border-gray-300 pb-1;
+}
+
+h2 {
+  @apply text-2xl border-b border-gray-300 pb-1;
+}
+
+h3 {
+  @apply text-xl;
+}
+
+h4 {
+  @apply text-lg;
+}
+
+p {
+  @apply mb-4 text-gray-700;
+}
+
+blockquote {
+  @apply p-4 my-6 bg-gray-100 border-l-4 border-gray-300 italic;
+}
+
+p {
+  @apply my-4 text-base leading-relaxed;
+}
+
+.Admin {
+  background-color: #f2f3f7;
+}
