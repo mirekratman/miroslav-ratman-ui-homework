@@ -44,39 +44,38 @@ const AppsStorageContext = createContext(undefined);
 
 const AppsStorageProvider = ({
   children,
-  limit = 0,
-  offset = 0,
+  // @ts-ignore:next-line
+  numberOfItems = 50,
   searchAppsQuery = "",
 }: AppsStorageProvidersProps) => {
   const { setIsComponentLoading } = useLoadingContext();
-  const [queryLimit, setQueryLimit] = useState(limit);
-  const [queryOffset, setQueryOffset] = useState(offset);
-  const [appsStorage, setAppsStorage] = useState({}); // Ensure correct type
+  const [queryLimit, setQueryLimit] = useState(numberOfItems);
+  const [queryOffset, setQueryOffset] = useState(0);
+  const [appsStorage, setAppsStorage] = useState([]); // Ensure correct type
+  const [hasMoreData, setHasMoreData] = useState(false); // Ensure correct type
 
   const fetchData = async () => {
     setIsComponentLoading(true);
+    setQueryOffset(queryOffset + queryLimit);
     try {
       const response = await fetch(
         `${process.env.KEBOOLA_API_URL}/apps?offset=${queryOffset}&limit=${queryLimit}`
       );
       const data = await response.json();
 
-      /*
-      TODO add loading additional data
-      setApiData(() => {
-        return (appsStorage && { ...appsStorage, ...data }) || data;
-      });
-      */
-      // TODO fix  this data - must be apiData
-      setAppsStorage(
-        // TODO fix types
-        // @ts-ignore:next-line
+      // @ts-ignore:next-line
+      const convertedData = data.reduce((acc, item) => {
+        acc[item.id] = item;
+        return acc;
+      }, {});
 
-        await data.reduce((acc, item) => {
-          acc[item.id] = item;
-          return acc;
-        }, {})
-      );
+      setAppsStorage((appsStorage) => ({
+        ...appsStorage,
+        ...convertedData,
+      }));
+
+      setHasMoreData(Boolean(Object.keys(data).length));
+
       setIsComponentLoading(false);
     } catch (error) {
       setIsComponentLoading(false);
@@ -95,7 +94,7 @@ const AppsStorageProvider = ({
   useEffect(() => {
     //!searchAppsQuery ? fetchData() : searchData(apiData);
     fetchData();
-  }, [queryOffset, queryLimit]); // Fetch data when queryOffset or queryLimit changes
+  }, [numberOfItems]); // Fetch data when queryOffset or queryLimit changes
 
   const ctx = {
     appsStorage,
@@ -104,6 +103,8 @@ const AppsStorageProvider = ({
     setQueryLimit,
     queryOffset,
     setQueryOffset,
+    fetchData,
+    hasMoreData,
   };
 
   return (
