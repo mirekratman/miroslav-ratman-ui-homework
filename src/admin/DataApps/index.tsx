@@ -1,25 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { AppsStorageContext } from "@keboola/shared/index";
+import {
+  AppsStorageContext,
+  AppsStorageContextProps,
+} from "@keboola/shared/Providers/AppsStorageProvider";
 import AppCard from "@keboola/components/Apps/AppCard";
 
 const DataApps = () => {
-  // TODO fix types
-
-  const {
-    // @ts-ignore:next-line
-    appsStorage,
-    // @ts-ignore:next-line
-    fetchData,
-    // @ts-ignore:next-line
-    hasMoreData,
-    // @ts-ignore:next-line
-    setQueryOffset,
-    // @ts-ignore:next-line
-    queryLimit,
-    // @ts-ignore:next-line
-    queryOffset,
-  } = useContext(AppsStorageContext);
+  const { appsStorage, fetchData, hasMoreData }: AppsStorageContextProps =
+    useContext(AppsStorageContext);
 
   return (
     <div className="container mx-auto py-10 pt-40">
@@ -28,8 +17,10 @@ const DataApps = () => {
         <InfiniteScroll
           dataLength={Object.keys(appsStorage).length}
           next={fetchData}
-          hasMore={hasMoreData} // Boolean to show if there is more data
-          loader={<h4>Loading...</h4>} // Loader component
+          hasMore={hasMoreData}
+          // TODO add nicer loader
+          loader={<h4>Loading...</h4>}
+          // TODO add nicer message
           endMessage={
             <p style={{ textAlign: "center" }}>
               <b>You have seen it all</b>
@@ -39,11 +30,13 @@ const DataApps = () => {
           <div className="flex flex-wrap mx-10">
             {Object.keys(appsStorage).length > 0
               ? Object.entries(appsStorage).map(([key, app]) => (
+                  // TODO verify types
+                  // @ts-ignore:next-line
                   <AppCard key={key} app={app} />
                 ))
-              : // TOIDO fix types
-                // @ts-ignore:next-line
-                Array.from(new Array(5), (el) => <AppCard key={el} />)}
+              : Array.from(new Array(5), (el) => (
+                  <AppCard key={el} app={undefined} />
+                ))}
           </div>
         </InfiniteScroll>
       </div>

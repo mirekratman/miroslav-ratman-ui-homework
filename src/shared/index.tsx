@@ -8,6 +8,5 @@ export * from "./Providers/LoadingProvider";
 export * from "./Providers/AppsStorageProvider";
 
 // Types
-export * from "./Types/JsonProps";
 export * from "./Types/ProviderProps";
 export * from "./Types/Props";

@@ -1,59 +1,125 @@
-// TODO fix types
 import React, { useState, createContext, useContext, useEffect } from "react";
 import { useLoadingContext } from "@keboola/shared/Providers/LoadingProvider";
 import { ProviderProps } from "@keboola/shared/Types/ProviderProps";
 
-export interface AppsStorageProvidersProps extends ProviderProps {
-  limit: number;
-  offset: number;
-  searchAppsQuery?: string;
-}
-
-// TODO Extend data types
 export interface AppsProps {
   id: number;
+  vendor: {
+    id: string;
+    name: string;
+    address: string;
+    email: string;
+    type: string;
+  };
+  version: number;
   name: string;
-  description: string;
+  type: string;
+  shortDescription: string;
+  londDescription: string;
+  licenseUrl: string;
+  documentationUrl: string;
+  sourceCodeUrl: string;
+  requiredMemory: string;
+  processTimeout: string;
+  features: Array<string>;
+  encryption: boolean;
+  network: string;
+  defaultBucket: boolean;
+  defaultBucketStage: string;
+  forwardToken: boolean;
+  forwardTokenDetails: boolean;
+  injectEnvironment: boolean;
+  complexity: string;
+  category: string;
+  categories: Array<string>;
+  dataTypeSupport: string;
+  allowedProcessorPosition: string;
+  cpuShares: string;
+  uiOptions: Array<string>;
+  imageParameters: Object;
+  stackParameters: Object;
+  testConfiguration: null;
+  configurationSchema: Object;
+  configurationRowSchema: string;
+  createConfigurationRowSchema: string;
+  configurationDescription: string;
+  configurationFormat: string;
+  emptyConfiguration: string;
+  emptyConfigurationRow: string;
+  actions: Array<string>;
+  fees: boolean;
+  limits: string;
+  logger: string;
+  loggerConfiguration: string;
+  stagingStorageInput: string;
+  stagingStorageOutput: string;
+  isDeprecated: boolean;
+  expiredOn: string;
+  replacementApp: string;
+  isPublic: boolean;
+  isPublished: boolean;
+  publishedVersion: number;
+  uri: string;
+  repository: Object;
+  publishingStatus: string;
+  icon: {
+    "32": string;
+    "64": string;
+    "128": string;
+  };
+  searchString: string;
 }
 
 export interface AppsStorageProps {
   [key: string]: AppsProps[];
 }
-
-/*
-TODO fix
-
-interface AppsStorageContextType {
-  appsStorage: AppsStorageProps;
-  setAppsStorage: React.Dispatch<React.SetStateAction<AppsStorageProps>>;
-  queryLimit: number;
-  setQueryLimit: React.Dispatch<React.SetStateAction<number>>;
-  queryOffset: number;
-  setQueryOffset: React.Dispatch<React.SetStateAction<number>>;
+export interface AppsStorageProvidersProps extends ProviderProps {
+  limit: number;
+  offset: number;
+  searchTerm?: string;
 }
-const AppsStorageContext = createContext<AppsStorageContextType>({
+
+export interface AppsStorageContextProps {
+  appsStorage: any;
+  setAppsStorage: any;
+  queryLimit: number;
+  setQueryLimit: any;
+  queryOffset: number;
+  setQueryOffset: any;
+  fetchData: any;
+  hasMoreData: boolean;
+  search: any;
+}
+
+export interface AppsStorageProviderProps {
+  children: React.ReactNode;
+  numberOfItems?: number;
+  searchTerm: string;
+}
+
+const AppsStorageContext = createContext<AppsStorageContextProps>({
   appsStorage: {},
-  setAppsStorage: () => {},
+  setAppsStorage: {},
   queryLimit: 0,
-  setQueryLimit: () => {},
+  setQueryLimit: {},
   queryOffset: 0,
-  setQueryOffset: () => {},
+  setQueryOffset: {},
+  fetchData: {},
+  hasMoreData: false,
+  search: {},
 });
-*/
-const AppsStorageContext = createContext(undefined);
 
 const AppsStorageProvider = ({
   children,
-  // @ts-ignore:next-line
   numberOfItems = 50,
   searchTerm = "",
-}: AppsStorageProvidersProps) => {
+}: AppsStorageProviderProps) => {
   const { setIsComponentLoading } = useLoadingContext();
   const [queryLimit, setQueryLimit] = useState(numberOfItems);
-  const [queryOffset, setQueryOffset] = useState(0);
-  const [data, setData] = useState([]); // Ensure correct type
-  const [appsStorage, setAppsStorage] = useState([]); // Ensure correct type
-  const [hasMoreData, setHasMoreData] = useState(false); // Ensure correct type
+  const [queryOffset, setQueryOffset] = useState<number>(0);
+  const [data, setData] = useState<AppsStorageProps>({});
+  const [appsStorage, setAppsStorage] = useState<AppsStorageProps>();
+  const [hasMoreData, setHasMoreData] = useState<boolean>(false);
 
   const fetchData = async () => {
     setIsComponentLoading(true);
@@ -64,26 +130,31 @@ const AppsStorageProvider = ({
       );
       const result = await response.json();
 
-      // @ts-ignore:next-line
-      const convertedData = result.reduce((acc, item) => {
-        acc[item.id] = item;
-        // INFO - Add search string for future searching
-        acc[item.id]["searchString"] = `${item.id} ${item?.vendor?.name} ${
-          item?.vendor?.email
-        } ${item.name} ${item.description} ${item.shortDescription} ${
-          item.longDescription
-        } ${item.categories.join(" ")} ${item.configurationDescription} ${
-          item.uri
-        }`.toLowerCase();
-        return acc;
-      }, {});
+      // INFO - Place for optimization
+      const convertedData: AppsStorageProps = result.reduce(
+        (acc: AppsStorageProps, item: any) => {
+          acc[item.id] = item;
+          // INFO - Add search string for future searching
+          // @ts-ignore:next-line - verify searchString
+          acc[item.id]["searchString"] = `${item.id} ${item?.vendor?.name} ${
+            item?.vendor?.email
+          } ${item.name} ${item.description} ${item.shortDescription} ${
+            item.longDescription
+          } ${item.categories.join(" ")} ${item.configurationDescription} ${
+            item.uri
+          }`.toLowerCase();
+          return acc;
+        },
+        {}
+      );
 
       const storageData = { ...appsStorage, ...convertedData };
 
-      // TODO - Place for optimization
+      // INFO - Place for optimization
       // INFO - Set main data store
       setData(storageData);
 
+      // INFO - Place for optimization
       // INFO - Set data for rendering
       setAppsStorage(storageData);
 
@@ -97,12 +168,12 @@ const AppsStorageProvider = ({
     }
   };
 
-  // TODO add filtering + types
-  // TODO fix types
-  // @ts-ignore:next-line
-  const search = async (searchTerm, data) => {
+  // INFO Search functionality
+  const search = async (searchTerm: string, data: AppsStorageProps) => {
     console.log(data);
-    const filtered = Object.entries(data).filter(([key, item]) =>
+    const filtered = Object.entries(data).filter(([, item]) =>
+      // TODO fix types
+      // @ts-ignore:next-line
       item.searchString.toLowerCase().includes(searchTerm.toLowerCase())
     );
     const result = Object.fromEntries(filtered);
@@ -111,10 +182,9 @@ const AppsStorageProvider = ({
 
   useEffect(() => {
     searchTerm === "" ? fetchData() : search(searchTerm, data);
-    //fetchData();
-  }, [numberOfItems, searchTerm]); // Fetch data when queryOffset or queryLimit changes
+  }, [numberOfItems, searchTerm]);
 
-  const ctx = {
+  const ctx: AppsStorageContextProps = {
     appsStorage,
     setAppsStorage,
     queryLimit,
@@ -127,9 +197,6 @@ const AppsStorageProvider = ({
   };
 
   return (
-    // TODO fix types
-    // @ts-ignore:next-line
-
     <AppsStorageContext.Provider value={ctx}>
       {children}
     </AppsStorageContext.Provider>

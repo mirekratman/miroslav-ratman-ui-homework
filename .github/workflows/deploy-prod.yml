@@ -28,6 +28,6 @@ jobs:
       - name: Run linter
         run: yarn lint
 
-      # TODO Run tests requires a testing framework to be setup to run with guthub actions
+      # INFO Run tests requires a testing framework to be setup to run with guthub actions
       #- name: Run tests
       #  run: yarn test

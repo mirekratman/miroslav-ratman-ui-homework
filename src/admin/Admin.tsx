@@ -19,7 +19,7 @@ const Admin = () => {
           <Route path="/" element={<Dashboard />} />
         </Routes>
 
-        <AppsStorageProvider limit={10} offset={0} searchTerm={searchTerm}>
+        <AppsStorageProvider searchTerm={searchTerm}>
           <Routes>
             <Route path="/apps" element={<DataApps />} />
             <Route path="/apps/:id" element={<DataAppsDetails />} />

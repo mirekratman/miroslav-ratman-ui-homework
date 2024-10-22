@@ -2,14 +2,13 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-// TODO Add types
-// @ts-ignore:next-line
-const MenuAdminTop = ({ SetSearchTerm }) => {
-  // TODO fix types
-  // @ts-ignore:next-line
-  const onChangeSearch = (e) => {
-    e.preventDefault();
+export interface MenuAdminTopProps {
+  SetSearchTerm: (searchTerm: string) => void;
+}
 
+const MenuAdminTop = ({ SetSearchTerm }: MenuAdminTopProps) => {
+  const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     SetSearchTerm(e.target.value.toLowerCase());
   };
 

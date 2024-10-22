@@ -2,7 +2,7 @@ const rspack = require("@rspack/core");
 const path = require("path");
 const Dotenv = require("dotenv-webpack");
 
-// TODO - remove in final production version. Replace with alternative option, like github SHA or build number
+// INFO - remove in final production version. Replace with alternative option, like github SHA or build number
 const packageJson = require("./package.json"); // Its for testing purposes only
 
 module.exports = {

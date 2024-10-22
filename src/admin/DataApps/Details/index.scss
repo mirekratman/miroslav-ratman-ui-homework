@@ -1,9 +1,9 @@
+/* Extra styles for markdown */
 .ReactMarkdown {
   font-family: "Arial", sans-serif;
   line-height: 1.6;
   color: #333;
 
-  /* Headings */
   h1,
   h2,
   h3,
@@ -13,7 +13,7 @@
     margin-top: 1.5em;
     margin-bottom: 0.5em;
     font-weight: bold;
-    color: #1a202c; // Darker color for headings
+    color: #1a202c;
   }
 
   h1 {
@@ -36,26 +36,23 @@
     font-size: 1.5rem;
   }
 
-  /* Paragraphs */
   p {
     margin-bottom: 1em;
-    color: #4a5568; // Dark gray for text
+    color: #4a5568;
   }
 
-  /* Blockquotes */
   blockquote {
     padding: 1em;
     margin: 1.5em 0;
     background-color: #f7fafc;
-    border-left: 4px solid #cbd5e0; // Light gray border for blockquotes
+    border-left: 4px solid #cbd5e0;
     font-style: italic;
 
     p {
-      margin: 0; // Remove margin inside blockquote
+      margin: 0;
     }
   }
 
-  /* Code blocks */
   pre {
     background-color: #2d3748;
     color: #f7fafc;
@@ -69,7 +66,6 @@
     }
   }
 
-  /* Inline code */
   code {
     background-color: #edf2f7;
     padding: 0.2em 0.4em;
@@ -77,7 +73,6 @@
     font-family: "Source Code Pro", monospace;
   }
 
-  /* Lists */
   ul,
   ol {
     margin-left: 1.5em;
@@ -92,7 +87,6 @@
     list-style-type: decimal;
   }
 
-  /* Links */
   a {
     color: #3182ce;
     text-decoration: underline;
@@ -101,7 +95,6 @@
     }
   }
 
-  /* Tables */
   table {
     width: 100%;
     border-collapse: collapse;

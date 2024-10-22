@@ -8,11 +8,11 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 const DataAppsDetails = () => {
-  // TODO fix types
-  // @ts-ignore:next-line
   const { appsStorage } = useContext(AppsStorageContext);
-  const { id } = useParams();
-  const app = appsStorage[id];
+  const { id: string } = useParams();
+  // TODO fix cannot find ID error
+  // @ts-ignore:next-line
+  const app = appsStorage?.[id];
 
   return (
     <div className="container mx-auto py-10 pt-40">
@@ -66,14 +66,17 @@ const DataAppsDetails = () => {
             <h3 className="text-lg font-semibold">Configuration</h3>
             {app.configurationSchema && (
               <ul className="list-disc pl-6 text-gray-600">
-                {Object.keys(app.configurationSchema.properties).map((key) => {
-                  const property = app.configurationSchema.properties[key];
-                  return (
-                    <li key={key}>
-                      <strong>{property.title}</strong>: {property.description}
-                    </li>
-                  );
-                })}
+                {Object.keys(app.configurationSchema.properties).map(
+                  (key: string) => {
+                    const property = app.configurationSchema.properties[key];
+                    return (
+                      <li key={key}>
+                        <strong>{property.title}</strong>:{" "}
+                        {property.description}
+                      </li>
+                    );
+                  }
+                )}
               </ul>
             )}
           </div>
@@ -103,18 +106,14 @@ const DataAppsDetails = () => {
 
           <div className="mt-4 border-t border-gray-200 pt-4">
             <h3 className="text-lg font-semibold">Categories</h3>
-            {
-              // TODO fix types
-              // @ts-ignore:next-line
-              app.categories?.map((category, index) => (
-                <span
-                  key={index}
-                  className="inline-block bg-gray-200 text-gray-700 text-xs font-semibold px-2 py-1 rounded-full mr-2"
-                >
-                  {category}
-                </span>
-              ))
-            }
+            {app.categories?.map((category: string, index: number) => (
+              <span
+                key={index}
+                className="inline-block bg-gray-200 text-gray-700 text-xs font-semibold px-2 py-1 rounded-full mr-2"
+              >
+                {category}
+              </span>
+            ))}
           </div>
         </div>
       )}

@@ -25,7 +25,7 @@ const LoadingProvider = ({
 }: LoadingProvidersProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isComponentLoading, setIsComponentLoading] = useState(false);
-  const ctx = {
+  const ctx: LoadingContextType = {
     isLoading,
     setIsLoading,
     isComponentLoading,

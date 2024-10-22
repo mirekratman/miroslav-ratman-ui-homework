@@ -3,8 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
-  // TODO fix types
-
   return (
     <div className="container mx-auto py-10 pt-40">
       <h2>Dashboard</h2>

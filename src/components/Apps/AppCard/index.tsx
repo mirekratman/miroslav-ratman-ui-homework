@@ -1,18 +1,14 @@
+import { AppsProps } from "@keboola/shared/index";
 import "./index.scss";
 
 import React from "react";
 import { Link } from "react-router-dom";
-
-// TODO fix types
-/*
-const interface AppCardProps {
-
+export interface AppCardProps {
+  key: string;
+  app: AppsProps | undefined;
 }
-*/
 
-// TODO fix types
-// @ts-ignore:next-line
-const AppCard = ({ app }) => {
+const AppCard = ({ key, app }: AppCardProps) => {
   const statusStyle =
     app && app?.publishingStatus === "public" ? "bg-green-500" : "bg-red-500";
   const loadingStyle = !app && "bg-gray-300 cursor-not-allowed opacity-50";
