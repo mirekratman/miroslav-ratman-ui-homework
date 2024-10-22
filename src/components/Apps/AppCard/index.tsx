@@ -4,11 +4,10 @@ import "./index.scss";
 import React from "react";
 import { Link } from "react-router-dom";
 export interface AppCardProps {
-  key: string;
-  app: AppsProps | undefined;
+  app?: AppsProps;
 }
 
-const AppCard = ({ key, app }: AppCardProps) => {
+const AppCard = ({ app }: AppCardProps) => {
   const statusStyle =
     app && app?.publishingStatus === "public" ? "bg-green-500" : "bg-red-500";
   const loadingStyle = !app && "bg-gray-300 cursor-not-allowed opacity-50";
@@ -52,9 +51,15 @@ const AppCard = ({ key, app }: AppCardProps) => {
           {app && app?.shortDescription}
           {!app && (
             <>
-              <div className={`${loadingStyle} rounded h-3 mt-4 w-3/4`}></div>
-              <div className={`${loadingStyle} rounded h-3 mt-2 w-full`}></div>
-              <div className={`${loadingStyle} rounded h-3 mt-2 w-5/6`}></div>
+              <span
+                className={`${loadingStyle} flex rounded h-3 mt-4 w-3/4`}
+              ></span>
+              <span
+                className={`${loadingStyle} flex rounded h-3 mt-2 w-full`}
+              ></span>
+              <span
+                className={`${loadingStyle} flex rounded h-3 mt-2 w-5/6`}
+              ></span>
             </>
           )}
         </p>

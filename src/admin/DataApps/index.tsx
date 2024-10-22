@@ -19,23 +19,51 @@ const DataApps = () => {
           next={fetchData}
           hasMore={hasMoreData}
           // TODO add nicer loader
-          loader={<h4>Loading...</h4>}
-          // TODO add nicer message
-          endMessage={
-            <p style={{ textAlign: "center" }}>
-              <b>You have seen it all</b>
-            </p>
+          loader={
+            <div className="flex justify-center items-center">
+              <svg
+                version="1.1"
+                id="L1"
+                xmlns="http://www.w3.org/2000/svg"
+                x="0px"
+                y="0px"
+                viewBox="0 0 100 100"
+                enableBackground="new 0 0 100 100"
+                width="100"
+                height="100"
+              >
+                <circle
+                  fill="none"
+                  stroke="#3498db"
+                  strokeWidth="4"
+                  strokeMiterlimit="10"
+                  strokeDasharray="150,200"
+                  cx="50"
+                  cy="50"
+                  r="30"
+                >
+                  <animateTransform
+                    attributeName="transform"
+                    type="rotate"
+                    from="0 50 50"
+                    to="360 50 50"
+                    dur="1s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              </svg>
+            </div>
           }
         >
           <div className="flex flex-wrap mx-10">
             {Object.keys(appsStorage).length > 0
-              ? Object.entries(appsStorage).map(([key, app]) => (
+              ? Object.entries(appsStorage).map(([, app]) => (
                   // TODO verify types
                   // @ts-ignore:next-line
-                  <AppCard key={key} app={app} />
+                  <AppCard key={app.id} app={app} />
                 ))
-              : Array.from(new Array(5), (el) => (
-                  <AppCard key={el} app={undefined} />
+              : Array.from(new Array(4), (el, index) => (
+                  <AppCard key={index} />
                 ))}
           </div>
         </InfiniteScroll>

@@ -117,8 +117,11 @@ const AppsStorageProvider = ({
   const { setIsComponentLoading } = useLoadingContext();
   const [queryLimit, setQueryLimit] = useState(numberOfItems);
   const [queryOffset, setQueryOffset] = useState<number>(0);
-  const [data, setData] = useState<AppsStorageProps>({});
-  const [appsStorage, setAppsStorage] = useState<AppsStorageProps>();
+  // TODO fix types
+  // @ts-ignore:next-line
+  const [data, setData] = useState<AppsStorageProps>([]);
+  // @ts-ignore:next-line
+  const [appsStorage, setAppsStorage] = useState<AppsStorageProps>([]);
   const [hasMoreData, setHasMoreData] = useState<boolean>(false);
 
   const fetchData = async () => {
