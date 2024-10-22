@@ -9,10 +9,10 @@ import remarkGfm from "remark-gfm";
 
 const DataAppsDetails = () => {
   const { appsStorage } = useContext(AppsStorageContext);
-  const { id: string } = useParams();
+  const { id } = useParams();
   // TODO fix cannot find ID error
   // @ts-ignore:next-line
-  const app = appsStorage?.[id];
+  const app = appsStorage[id];
 
   return (
     <div className="container mx-auto py-10 pt-40">

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   return (
-    <div className="container mx-auto py-10 pt-40">
+    <div className="container flex-grow mx-auto py-10 pt-40">
       <h2>Dashboard</h2>
 
       <div className="max-w-6xl mx-auto p-4">

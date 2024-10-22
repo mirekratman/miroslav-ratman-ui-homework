@@ -13,7 +13,7 @@ const Admin = () => {
   const [searchTerm, SetSearchTerm] = useState("");
   return (
     <Router>
-      <div className="Admin inset-0">
+      <div className="Admin inset-0 min-h-screen flex flex-col">
         <MenuAdminTop SetSearchTerm={SetSearchTerm} />
         <Routes>
           <Route path="/" element={<Dashboard />} />
