@@ -19,10 +19,11 @@ const Admin = () => {
           <Route path="/" element={<Dashboard />} />
         </Routes>
 
-        {/* TODO - hook.js:332 No routes matched location "/apps" - browser message */}
         <AppsStorageProvider searchTerm={searchTerm}>
           <Routes>
+            {/* TODO - hook.js:332 No routes matched location "/apps" - browser message */}
             <Route path="/apps" element={<DataApps />} />
+            {/* TODO - fix No routes matched location "/apps/kds-team.ex-2performant" in browser  */}
             <Route path="/apps/:id" element={<DataAppsDetails />} />
           </Routes>
         </AppsStorageProvider>

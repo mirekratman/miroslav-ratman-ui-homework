@@ -64,12 +64,12 @@ I still need to count that current project takes priority over this task and oth
 - linter setup
 - cypress setup
 
-## Main app setup - around 4-5 hours
+## Main app setup - around 4-5 hours - (4 hours spent)
 
 - main app wrapper
 - basic components library
 
-## App homepage listing - around 6-8 hours (require some clarification - see above)
+## App homepage listing - around 6-8 hours (require some clarification - see above) - (8 hours spent)
 
 - design
 - API data management
@@ -78,20 +78,20 @@ I still need to count that current project takes priority over this task and oth
 - pagination
 - filtering
 
-## APP details page - around 5-6 hours
+## APP details page - around 5-6 hours - (4 hours spent)
 
 - design
 - API data management
 - app details
 - sharable link
 
-## CI/CD pipelines - around 5-6 hours
+## CI/CD pipelines - around 5-6 hours (3 hours spent - do not continue)
 
 - github actions
 - vercel setup
 - initial deploy
 
-## Example test - 1-2 hours
+## Example test - 1-2 hours - (30 min spent - one test for example)
 
 - example cypres test for detail page
   FYI: I will not cover on purpose everything with tests, as its a test task.
@@ -104,7 +104,32 @@ Estimated time: 30-36 hours
 
 # Installation
 
-TBD
+Plesa make sure you will create ".env" file in root dir.
+You can use example file ".env.example" for it.
+
+The application can be run on linux/mac using Makefile.
+For example to start app please type:
+
+`make`
+
+the application run on "http://localhost:8080".
+
+In case you want to run linter or builtin tests (for now only one) please type:
+
+`make lint`
+`make test`
+
+Additionaly to speedup development I made mocked API. To use it please make sure you will setup "KEBOOLA_API_URL" in ".env" file
+pointing to "http://localhost:3100", Then run separately in new terminal window:
+
+`make mockapi`
+
+There is also a deployment process setup for DEV env. Please create ".vercel-token" file (you can use ".vercel-token.example"
+and put your vercel token inside. Then run:
+
+`make deploy`
+
+It will deploy app to new projekt in vercel.
 
 # Deployment
 
@@ -131,6 +156,26 @@ Its deployed by github actions and uses predefined actions secrets.
 As I do not have full access to shared repo, I created a one-to-one copy on my github account and used it
 to setup and verify CI/CD.
 
+Based on request - do not continue
+
 # Suggestion
 
-TBD
+## Known issues
+
+- Searching when data is not fully loaded (not all data is loaded) - this could show strange behaviour when we already filtered some data but next portion of data is loaded on scroll
+- Browser warnings "No routes matched location "/apps"" and "No routes matched location "/apps/......." - application behaves correctly, but need to find main cause of the issue
+- API endpoint extremly slow response time - this causing main application performance issue with data loading.
+- search box clear button
+- missing menu in mobile version
+
+## Optimisation
+
+- API endpoint caching
+- Load all data at once (for task purposes I splitted it to separate requests) - this will help with searching issue described above, as also give a chance to add extra filtering by for example category. For now searching by category is done through search box
+- Beter design implementation - for now I mad a quick design based mainly on some photo of the system I took from internet. Some styling could be optimized better.
+- I'm not a big fan of css frameworks like tailwind, but have no problem to use it. Because I most commonly use sass and component related styling, I included them in to code too, to show approach. Its just few files with some super basic styling - as example.
+- The components/application parts folder structure I usualy make the way it keeps a dependency logic. We could use different approach if needed.
+- I usually typing inputs and outputs of particular components, additionaly some extra typing inside. The main reason for this is, it keeps the code reasonable clear still but at the same time protects from issues of wrong data flow. I believe its reasonable approach between code clearity, proper data flow, speed of development and ability to understand the code way more quickly by new commers.
+- I used 2 different types of image files (PNG,SVG) placement. Some of them are loaded as assets, some as a part of the code. The reason is - if we need to somehow reduce bundle size is beter to keep media separated and load from CDN.
+- When it comes to application performance we are currently on very reasonable level (around 75% to 90%). There is still room for optimisation, but currently the root problem is API endpoint which really affects some parameters. It will require deeper dive in to details.
+- I made app which is responsive, but there is a room por optimisation too. It wsa not part of the task.
