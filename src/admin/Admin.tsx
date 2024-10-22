@@ -10,16 +10,16 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AppsStorageProvider } from "@keboola/shared/index";
 
 const Admin = () => {
-  const [searchAppsQuery, setSearchAppsQuery] = useState("");
+  const [searchTerm, SetSearchTerm] = useState("");
   return (
     <Router>
       <div className="Admin inset-0">
-        <MenuAdminTop setSearchAppsQuery={setSearchAppsQuery} />
+        <MenuAdminTop SetSearchTerm={SetSearchTerm} />
         <Routes>
           <Route path="/" element={<Dashboard />} />
         </Routes>
 
-        <AppsStorageProvider limit={10} offset={0}>
+        <AppsStorageProvider limit={10} offset={0} searchTerm={searchTerm}>
           <Routes>
             <Route path="/apps" element={<DataApps />} />
             <Route path="/apps/:id" element={<DataAppsDetails />} />

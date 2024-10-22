@@ -46,11 +46,12 @@ const AppsStorageProvider = ({
   children,
   // @ts-ignore:next-line
   numberOfItems = 50,
-  searchAppsQuery = "",
+  searchTerm = "",
 }: AppsStorageProvidersProps) => {
   const { setIsComponentLoading } = useLoadingContext();
   const [queryLimit, setQueryLimit] = useState(numberOfItems);
   const [queryOffset, setQueryOffset] = useState(0);
+  const [data, setData] = useState([]); // Ensure correct type
   const [appsStorage, setAppsStorage] = useState([]); // Ensure correct type
   const [hasMoreData, setHasMoreData] = useState(false); // Ensure correct type
 
@@ -61,20 +62,33 @@ const AppsStorageProvider = ({
       const response = await fetch(
         `${process.env.KEBOOLA_API_URL}/apps?offset=${queryOffset}&limit=${queryLimit}`
       );
-      const data = await response.json();
+      const result = await response.json();
 
       // @ts-ignore:next-line
-      const convertedData = data.reduce((acc, item) => {
+      const convertedData = result.reduce((acc, item) => {
         acc[item.id] = item;
+        // INFO - Add search string for future searching
+        acc[item.id]["searchString"] = `${item.id} ${item?.vendor?.name} ${
+          item?.vendor?.email
+        } ${item.name} ${item.description} ${item.shortDescription} ${
+          item.longDescription
+        } ${item.categories.join(" ")} ${item.configurationDescription} ${
+          item.uri
+        }`.toLowerCase();
         return acc;
       }, {});
 
-      setAppsStorage((appsStorage) => ({
-        ...appsStorage,
-        ...convertedData,
-      }));
+      const storageData = { ...appsStorage, ...convertedData };
 
-      setHasMoreData(Boolean(Object.keys(data).length));
+      // TODO - Place for optimization
+      // INFO - Set main data store
+      setData(storageData);
+
+      // INFO - Set data for rendering
+      setAppsStorage(storageData);
+
+      // INFO - Check if there is more data for infinity scroll
+      setHasMoreData(Boolean(Object.keys(result).length));
 
       setIsComponentLoading(false);
     } catch (error) {
@@ -86,15 +100,19 @@ const AppsStorageProvider = ({
   // TODO add filtering + types
   // TODO fix types
   // @ts-ignore:next-line
-
-  const searchData = async (data) => {
-    //setAppsStorage({ ...data[0] });
+  const search = async (searchTerm, data) => {
+    console.log(data);
+    const filtered = Object.entries(data).filter(([key, item]) =>
+      item.searchString.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    const result = Object.fromEntries(filtered);
+    setAppsStorage(result);
   };
 
   useEffect(() => {
-    //!searchAppsQuery ? fetchData() : searchData(apiData);
-    fetchData();
-  }, [numberOfItems]); // Fetch data when queryOffset or queryLimit changes
+    searchTerm === "" ? fetchData() : search(searchTerm, data);
+    //fetchData();
+  }, [numberOfItems, searchTerm]); // Fetch data when queryOffset or queryLimit changes
 
   const ctx = {
     appsStorage,
@@ -105,6 +123,7 @@ const AppsStorageProvider = ({
     setQueryOffset,
     fetchData,
     hasMoreData,
+    search,
   };
 
   return (
