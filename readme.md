@@ -175,6 +175,7 @@ Based on request - do not continue
 - API endpoint extremly slow response time - this causing main application performance issue with data loading.
 - search box clear button
 - missing menu in mobile version
+- Available https://keboola-task-dev-mr.vercel.app version is in DEV STRICT mode. This cause double-renders and as a result double calls to API. In case of Production version we can remove Strict mode (more info https://react.dev/reference/react/StrictMode)
 
 ## Optimisation
 
