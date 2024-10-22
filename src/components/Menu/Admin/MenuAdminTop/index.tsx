@@ -15,7 +15,7 @@ const MenuAdminTop = ({ SetSearchTerm }: MenuAdminTopProps) => {
   return (
     <div className="MenuAdminTop max-w-full fixed inset-x-0">
       <nav className="bg-white border-gray-200 border-b	border-b-slate-200">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+        <div className="flex flex-wrap justify-between items-center mx-auto p-4">
           <a
             href="https://www.keboola.com/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -79,7 +79,7 @@ const MenuAdminTop = ({ SetSearchTerm }: MenuAdminTopProps) => {
         </div>
       </nav>
       <nav className="bg-white border-b border-b-slate-200">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+        <div className="flex flex-wrap justify-between items-center mx-auto p-4">
           <div
             id="mega-menu-full"
             className="items-center justify-between font-medium hidden w-full md:flex md:w-auto md:order-1"

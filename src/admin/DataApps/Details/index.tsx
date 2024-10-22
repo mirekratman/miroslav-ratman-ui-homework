@@ -39,13 +39,13 @@ const DataAppsDetails = () => {
 
           <div className="mt-4">
             <h3 className="text-lg font-semibold">About this App</h3>
-            <p className="text-gray-600">
+            <div className="text-gray-600">
               <ReactMarkdown
                 children={app.longDescription}
                 remarkPlugins={[remarkGfm]}
                 className={"ReactMarkdown"}
               />
-            </p>
+            </div>
           </div>
 
           <div className="mt-4 border-t border-gray-200 pt-4">
@@ -53,7 +53,6 @@ const DataAppsDetails = () => {
             <p className="text-gray-600">
               <strong>Name: </strong>
               {app.vendor?.name}
-              <br />
               <strong>Email: </strong>
               {app.vendor?.email}
               <br />

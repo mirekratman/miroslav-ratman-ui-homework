@@ -13,7 +13,7 @@ const DataApps = () => {
   return (
     <div className="container mx-auto py-10 pt-40">
       <h2>Apps Listing</h2>
-      <div className="max-w-6xl mx-auto p-4">
+      <div className="mx-auto">
         <InfiniteScroll
           dataLength={Object.keys(appsStorage).length}
           next={fetchData}
@@ -55,7 +55,7 @@ const DataApps = () => {
             </div>
           }
         >
-          <div className="flex flex-wrap mx-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 py-4">
             {Object.keys(appsStorage).length > 0
               ? Object.entries(appsStorage).map(([, app]) => (
                   // TODO verify types

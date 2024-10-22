@@ -12,9 +12,7 @@ const AppCard = ({ app }: AppCardProps) => {
     app && app?.publishingStatus === "public" ? "bg-green-500" : "bg-red-500";
   const loadingStyle = !app && "bg-gray-300 cursor-not-allowed opacity-50";
   return (
-    <div
-      className={`md:w-1/2 mt-10 p-4 bg-white shadow-lg rounded-lg border border-gray-200`}
-    >
+    <div className={`p-4 bg-white shadow-lg rounded-lg border border-gray-200`}>
       <div className={!app ? `animate-pulse` : ""}>
         <div className="flex items-start">
           <img
@@ -67,7 +65,7 @@ const AppCard = ({ app }: AppCardProps) => {
         <div className=" mt-4 flex space-x-4 justify-end">
           <Link
             to={`/apps/${app?.id}`}
-            className={`flex-1 px-4 py-2 min-h-10 text-white bg-blue-600 rounded-lg ${loadingStyle}`}
+            className={`px-4 py-2 min-h-10 text-white bg-blue-600 rounded-lg ${loadingStyle}`}
           >
             {app && "Show details"}
           </Link>

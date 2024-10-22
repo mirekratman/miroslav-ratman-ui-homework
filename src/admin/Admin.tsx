@@ -19,6 +19,7 @@ const Admin = () => {
           <Route path="/" element={<Dashboard />} />
         </Routes>
 
+        {/* TODO - hook.js:332 No routes matched location "/apps" - browser message */}
         <AppsStorageProvider searchTerm={searchTerm}>
           <Routes>
             <Route path="/apps" element={<DataApps />} />

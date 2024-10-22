@@ -111,7 +111,7 @@ const AppsStorageContext = createContext<AppsStorageContextProps>({
 
 const AppsStorageProvider = ({
   children,
-  numberOfItems = 50,
+  numberOfItems = 48,
   searchTerm = "",
 }: AppsStorageProviderProps) => {
   const { setIsComponentLoading } = useLoadingContext();
