@@ -27,8 +27,6 @@
     "eslint-plugin-react": "^7.37.1",
     "postcss": "^8.4.47",
     "postcss-loader": "^8.1.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "sass": "^1.80.3",
     "sass-loader": "^16.0.2",
     "style-loader": "^4.0.0",
@@ -37,6 +35,8 @@
     "vercel": "^32.3.0"
   },
   "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "dotenv-webpack": "^8.1.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-markdown": "^9.0.1",
