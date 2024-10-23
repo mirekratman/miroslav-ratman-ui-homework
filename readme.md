@@ -190,3 +190,4 @@ Based on request - do not continue
 - When it comes to application performance we are currently on very reasonable level (around 75% to 90%). There is still room for optimisation, but currently the root problem is API endpoint which really affects some parameters. It will require deeper dive in to details.
 - I made app which is responsive, but there is a room por optimisation too. It wsa not part of the task.
 - We could use purgeCSS to reduce the size of taillwind output code for production
+- additional server setup to gzip all necessary bundled files
