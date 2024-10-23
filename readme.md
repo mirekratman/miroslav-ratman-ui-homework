@@ -189,6 +189,6 @@ Based on request - do not continue
 - I used 2 different types of image files (PNG,SVG) placement. Some of them are loaded as assets, some as a part of the code. The reason is - if we need to somehow reduce bundle size is beter to keep media separated and load from CDN.
 - When it comes to application performance we are currently on very reasonable level (around 75% to 90%). There is still room for optimisation, but currently the root problem is API endpoint which really affects some parameters. It will require deeper dive in to details.
 - I made app which is responsive, but there is a room por optimisation too. It wsa not part of the task.
-- We could use purgeCSS to reduce the size of taillwind output code for production
+- We could use purge css with additional settings to reduce the size of taillwind output code for production
 - additional server setup to gzip all necessary bundled files
 - we can replace Dotenv with rspack builtin plugin - configuration change is required
