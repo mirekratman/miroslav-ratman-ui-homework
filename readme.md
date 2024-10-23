@@ -191,3 +191,4 @@ Based on request - do not continue
 - I made app which is responsive, but there is a room por optimisation too. It wsa not part of the task.
 - We could use purgeCSS to reduce the size of taillwind output code for production
 - additional server setup to gzip all necessary bundled files
+- we can replace Dotenv with rspack builtin plugin - configuration change is required
