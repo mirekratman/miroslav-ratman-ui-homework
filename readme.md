@@ -11,20 +11,20 @@ The DOC file with the task can be found [here](docs/ENGG-Frontend Homework.pdf).
 - To clarify (rethorical question): in Requirements section, point 3 is a part of point 2.
   `toto je v poriadku`
 - Must haves section contain "Use a store concept to manage data retrieved from the API." - do you mean use state manager like redux or choose any method of data store I consider the best. The question is mainly related to the fact that I assume data taken from API will be static and will not change more frequently? If more frequently it will require different approach that for static data, and all the necessary implications in code.
-  `naschval je tam napisane "store concept", aby sme si overili, co si za tym kandidat predstavi, ak tam das Redux, ok ... ak to nechas v komponente, tiez ok`
+  `Odpoved: naschval je tam napisane "store concept", aby sme si overili, co si za tym kandidat predstavi, ak tam das Redux, ok ... ak to nechas v komponente, tiez ok`
 - in "Nice to haves" section I see filtering options. I guess we are counting with exact searching capabilities, like using proper wording of components names. If not this will require more detailed specification how it should work.
-  `podla toho co chodi z API, mas sam zvolit, ktora informacia sa ti zda vhodna na zobrazenie`
+  `Odpoved: podla toho co chodi z API, mas sam zvolit, ktora informacia sa ti zda vhodna na zobrazenie`
 - Please specify more clearly what you mean by saing "Incorporate additional functionalities or data display options that you find beneficial.". Its quite wide topic, not really describing purpose of data displaying. I guess it could be related to pagination.
-  `je to na kandidatovi, nech tam da, co mu prislo vhodne`
+  `Odpoved: je to na kandidatovi, nech tam da, co mu prislo vhodne`
 - in nice to have section we have "Optimize the application for initial loading speed.". Please specify more detaily what are the acceptable criteria/parameters. By saying "optimize" we need to have a defined starting point and an estimated result we should achieve.
-  `opat je na kandidatovi, co zvoli aby initial load bol co najrychlejsie - su na to best practices`
+  `Odpoved: opat je na kandidatovi, co zvoli aby initial load bol co najrychlejsie - su na to best practices`
 - When it comes to "Upon completion, push your code to the provided repository for review." should I use approach I mentioned in my email.
   I would like to push changes to repository step-by-step as things will be completed.
-  `Ked to budes mat hotove, proste to pushni do repozitara, commituj si postupne, ako uznas za vhodne`
+  `Odpoved: Ked to budes mat hotove, proste to pushni do repozitara, commituj si postupne, ako uznas za vhodne`
 - there is an issue in a task description: The task contain wording "components" "public components". There is no components available in API endpoints. I see some links reffering to APPs/Apps details endpoints. Please clarify the task and provide a proper description.
-  `Toto je z historickych dovodov, kedy sme to volali "apky", no dnes su to "komponenty". Nebrani to vypracovaniu ulohy.`
+  `Odpoved: Toto je z historickych dovodov, kedy sme to volali "apky", no dnes su to "komponenty". Nebrani to vypracovaniu ulohy.`
 - Please set "main" branch as default.
-  `Hotovo`
+  `Odpoved: Hotovo` (nebylo hotovo)
 
 ## Suggestions
 
