@@ -10,6 +10,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
+      "@keboola/admin/*": ["./src/admin/*"],
       "@keboola/shared/*": ["./src/shared/*"],
       "@keboola/components/*": ["./src/components/*"]
     }

@@ -5,7 +5,19 @@ export interface ErrorProvidersProps extends ProviderProps {
   errorContent?: React.ReactNode;
 }
 
-const ErrorContext = createContext({});
+interface ErrorContextType {
+  isError: boolean;
+  setIsError: React.Dispatch<React.SetStateAction<boolean>>;
+  logError: (error: string) => void;
+  logWarning: (warning: string) => void;
+}
+
+const ErrorContext = createContext<ErrorContextType>({
+  isError: false,
+  setIsError: () => {},
+  logError: () => {},
+  logWarning: () => {},
+});
 
 const ErrorProvider = ({
   children,

@@ -1,8 +1,8 @@
 # dependencies
 
 # testing
-tests/cypress/video
-tests/cypress/screenshots
+/tests/cypress/videos
+/tests/cypress/screenshots
 
 # production
 node_modules
@@ -16,3 +16,6 @@ node_modules
 /dist
 .vercel-token
 .vercel
+
+# env
+.env
