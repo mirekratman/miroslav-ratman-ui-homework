@@ -26,7 +26,7 @@ The DOC file with the task can be found [here](docs/ENGG-Frontend Homework.pdf).
 - Please set "main" branch as default.
   `Odpoved: Hotovo` (nebylo hotovo)
 
-## Suggestions
+## Suggestions (found issues before task completion)
 
 - Please update API list endpoint with proper error message
   currently: ""errorMessage": "Parameter offset must be integer greater then 0"," -> should be ""errorMessage": "Parameter offset must be integer, equal or greater then 0",
