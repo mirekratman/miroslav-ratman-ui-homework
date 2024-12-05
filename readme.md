@@ -91,7 +91,7 @@ I still need to count that current project takes priority over this task and oth
 - app details
 - sharable link
 
-## CI/CD pipelines - around 5-6 hours (3 hours spent - do not continue)
+## CI/CD pipelines - around 5-6 hours (3 hours spent - do not continue based on request)
 
 - github actions
 - vercel setup
