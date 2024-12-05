@@ -1,0 +1,110 @@
+{
+  "id": "kds-team.ex-2performant",
+  "vendor": {
+    "id": "kds-team",
+    "name": "KDS Team",
+    "address": "Keboola Global\n(Vancouver, London, Prague, Chicago)",
+    "email": "component.factory@keboola.com",
+    "type": "keboola"
+  },
+  "version": 60,
+  "name": "2Performant",
+  "type": "extractor",
+  "shortDescription": "2perfomant service tracks commissions and affiliates.",
+  "longDescription": "# 2Performant Affiliate Extractor\n\nThe 2Performant extractor allows to download all commissions and their transactions.\n\nTo successfully use the extractor, a username and password used to access [network.2performant.com](https://network.2performant.com/) is needed.\n\n## Configuration\n\nA configuration of 3 mandatory parameters is required. A sample configuration of the component can be found in [component's repository](https://bitbucket.org/kds_consulting_team/kds-team.ex-2performant/src/master/component_config/sample-config/).\n\n- username (`username`) - a username used to login to 2performant;\n- password (`#password`) - a password associated with username;\n- month delta (`monthsBack`) - a positive integer marking the amount of months for which to download commissions;\n- incremental load (`incremental`) - a boolean marking, whether incremental load should be used.\n\n## Output\n\nA table with commissions returned by the API. Table is loaded incrementally with column `id` used as primary key.",
+  "licenseUrl": null,
+  "documentationUrl": "https://bitbucket.org/kds_consulting_team/kds-team.ex-2performant/src/master/README.md",
+  "sourceCodeUrl": "https://bitbucket.org/kds_consulting_team/kds-team.ex-2performant/src/master/",
+  "requiredMemory": null,
+  "processTimeout": null,
+  "features": [],
+  "encryption": false,
+  "network": "bridge",
+  "defaultBucket": true,
+  "defaultBucketStage": "in",
+  "forwardToken": false,
+  "forwardTokenDetails": false,
+  "injectEnvironment": false,
+  "complexity": null,
+  "category": null,
+  "categories": ["Advertisement"],
+  "dataTypeSupport": "none",
+  "allowedProcessorPosition": "any",
+  "cpuShares": null,
+  "uiOptions": ["genericDockerUI"],
+  "imageParameters": {},
+  "stackParameters": {},
+  "testConfiguration": null,
+  "configurationSchema": {
+    "type": "object",
+    "title": "Parameters",
+    "required": ["#password", "username", "monthsBack", "incremental"],
+    "properties": {
+      "username": {
+        "type": "string",
+        "title": "Username",
+        "default": "",
+        "minLength": 1,
+        "description": "User name used to log in to <a href='https://network.2performant.com/'>network.2performant.com</a>.",
+        "propertyOrder": 100
+      },
+      "#password": {
+        "type": "string",
+        "title": "Password",
+        "format": "password",
+        "minLength": 1,
+        "description": "User password used to log in to <a href='https://network.2performant.com/'>network.2performant.com</a>.",
+        "propertyOrder": 200
+      },
+      "monthsBack": {
+        "type": "integer",
+        "title": "Month delta",
+        "default": 4,
+        "maximum": 48,
+        "minimum": 1,
+        "description": "The amount of months, including this one, for which to download the data. Functionality is as follows: <ul><li>1 - downloads data for current month,</li><li>2 - downloads data for current and previous month,</li><li>3 - downloads data for this, previous and month prior to that,</li><li>4 - etc.</li>",
+        "propertyOrder": 300
+      },
+      "incremental": {
+        "type": "boolean",
+        "title": "Incremental load",
+        "default": true,
+        "description": "Use incremental load to storage.",
+        "propertyOrder": 400
+      }
+    }
+  },
+  "configurationRowSchema": null,
+  "createConfigurationRowSchema": null,
+  "configurationDescription": "#### Input\n\nA configuration of 3 mandatory parameters is required. A sample configuration of the component can be found in [component's repository](https://bitbucket.org/kds_consulting_team/kds-team.ex-2performant/src/master/component_config/sample-config/).\n\n- username (`username`) - a username used to login to 2performant;\n- password (`#password`) - a password associated with username;\n- month delta (`monthsBack`) - a positive integer marking the amount of months for which to download commissions;\n- incremental load (`incremental`) - a boolean marking, whether incremental load should be used.\n\n#### Output\n\nA table with commissions returned by the API. Table is loaded incrementally with column `id` used as primary key.",
+  "configurationFormat": "json",
+  "emptyConfiguration": null,
+  "emptyConfigurationRow": null,
+  "actions": [],
+  "fees": false,
+  "limits": null,
+  "logger": "gelf",
+  "loggerConfiguration": null,
+  "stagingStorageInput": "local",
+  "stagingStorageOutput": "local",
+  "isDeprecated": false,
+  "expiredOn": null,
+  "replacementApp": null,
+  "isPublic": true,
+  "isPublished": true,
+  "publishedVersion": 60,
+  "uri": "docker/kds-team.ex-2performant",
+  "repository": {
+    "type": "ecr",
+    "uri": "147946154733.dkr.ecr.us-east-1.amazonaws.com/developer-portal-v2/kds-team.ex-2performant",
+    "tag": "0.1.5",
+    "options": {},
+    "digest": "sha256:1e4d0a228fb7ffd74e7726f4f27b37f2f4ee5c6363a4be92cb4499e699576cb6"
+  },
+  "publishingStatus": "public",
+  "icon": {
+    "32": "https://ui.keboola-assets.com/developer-portal/icons/kds-team.ex-2performant/32/1623156530892.png",
+    "64": "https://ui.keboola-assets.com/developer-portal/icons/kds-team.ex-2performant/64/1623156530892.png",
+    "128": null
+  }
+}

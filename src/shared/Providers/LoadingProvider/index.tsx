@@ -5,16 +5,31 @@ export interface LoadingProvidersProps extends ProviderProps {
   loadingContent?: React.ReactNode;
 }
 
-const LoadingContext = createContext({});
+interface LoadingContextType {
+  isLoading: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  isComponentLoading: boolean;
+  setIsComponentLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const LoadingContext = createContext<LoadingContextType>({
+  isLoading: false,
+  setIsLoading: () => {},
+  isComponentLoading: false,
+  setIsComponentLoading: () => {},
+});
 
 const LoadingProvider = ({
   children,
   loadingContent = <></>,
 }: LoadingProvidersProps) => {
   const [isLoading, setIsLoading] = useState(false);
-  const ctx = {
+  const [isComponentLoading, setIsComponentLoading] = useState(false);
+  const ctx: LoadingContextType = {
     isLoading,
     setIsLoading,
+    isComponentLoading,
+    setIsComponentLoading,
   };
 
   return (

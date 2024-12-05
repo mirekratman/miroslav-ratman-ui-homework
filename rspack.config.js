@@ -1,7 +1,8 @@
 const rspack = require("@rspack/core");
 const path = require("path");
+const Dotenv = require("dotenv-webpack");
 
-// TODO - remove in final production version. Replace with alternative option, like github SHA or build number
+// INFO - remove in final production version. Replace with alternative option, like github SHA or build number
 const packageJson = require("./package.json"); // Its for testing purposes only
 
 module.exports = {
@@ -12,6 +13,7 @@ module.exports = {
   output: {
     clean: true,
     filename: "[name].js",
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -38,8 +40,15 @@ module.exports = {
       },
     ],
   },
+  devServer: {
+    static: [path.resolve(__dirname, "./src/admin/public/assets/")],
+    historyApiFallback: {
+      disableDotRule: true,
+    },
+  },
   resolve: {
     alias: {
+      "@keboola/admin": path.resolve(__dirname, "./src/admin/"),
       "@keboola/shared": path.resolve(__dirname, "./src/shared/"),
       "@keboola/components": path.resolve(__dirname, "./src/components/"),
     },
@@ -51,6 +60,18 @@ module.exports = {
       templateParameters: {
         version: packageJson.version,
       },
+    }),
+    new rspack.CopyRspackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "./src/admin/public/assets"),
+          to: path.resolve(__dirname, "./dist/assets"),
+        },
+      ],
+    }),
+    new Dotenv({
+      path: "./.env",
+      safe: true,
     }),
   ],
 };
