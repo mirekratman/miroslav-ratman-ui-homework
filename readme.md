@@ -2,7 +2,7 @@
 
 ## Task
 
-The DOC file with the task can be found [here](docs/ENGG-Frontend Homework.pdf).
+The DOC file with the task can be found [here](/docs/ENGG-Frontend Homework.pdf).
 
 ## Questions
 
