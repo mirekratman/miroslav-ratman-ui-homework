@@ -1,7 +1,5 @@
 # Keboola home task
 
-# FYI: Its a work-in-progres mode. There could be changes in code/description during development.
-
 ## Task
 
 The DOC file with the task can be found [here](docs/ENGG-Frontend Homework.pdf).
