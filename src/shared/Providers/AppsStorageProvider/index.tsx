@@ -1,4 +1,10 @@
-import React, { useState, createContext, useContext, useEffect } from "react";
+import React, {
+  useState,
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+} from "react";
 import { useLoadingContext } from "@keboola/shared/Providers/LoadingProvider";
 import { ProviderProps } from "@keboola/shared/Types/ProviderProps";
 
@@ -114,7 +120,7 @@ const AppsStorageProvider = ({
   numberOfItems = 48,
   searchTerm = "",
 }: AppsStorageProviderProps) => {
-  const { setIsComponentLoading } = useLoadingContext();
+  const { isComponentLoading, setIsComponentLoading } = useLoadingContext();
   const [queryLimit, setQueryLimit] = useState(numberOfItems);
   const [queryOffset, setQueryOffset] = useState<number>(0);
   // TODO fix types
@@ -125,7 +131,6 @@ const AppsStorageProvider = ({
   const [hasMoreData, setHasMoreData] = useState<boolean>(false);
 
   const fetchData = async () => {
-    setIsComponentLoading(true);
     setQueryOffset(queryOffset + queryLimit);
     try {
       const response = await fetch(
@@ -185,7 +190,7 @@ const AppsStorageProvider = ({
 
   useEffect(() => {
     searchTerm === "" ? fetchData() : search(searchTerm, data);
-  }, [numberOfItems, searchTerm]);
+  }, []);
 
   const ctx: AppsStorageContextProps = {
     appsStorage,
